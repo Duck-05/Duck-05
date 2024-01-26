@@ -5,20 +5,19 @@
 #include <windows.h>
 using namespace std;
 
-const int Size = 8;  // Kích thước bảng
-const int MINES = 10;  // Số lượng mìn
+const int Size = 8; 
+const int MINES = 10; 
 
 struct Cell
 {
-    char value;  // Giá trị của ô (mìn hoặc số ô lân cận)
-    bool revealed;  // Trạng thái hiển thị của ô
+    char value;  
+    bool revealed; 
 };
 
 vector<vector<Cell>> board(Size, vector<Cell>(Size, { ' ', false }));
 
 void initializeBoard()
 {
-    // Khởi tạo bảng với khoảng trắng và trạng thái ẩn
     for (int i = 0; i < Size; ++i)
     {
         for (int j = 0; j < Size; ++j)
@@ -97,7 +96,6 @@ int countAdjacentMines(int row, int col)
 
 void revealCell(int row, int col)
 {
-    // Hàm đệ quy để hiển thị ô và các ô lân cận
     if (!isValid(row, col) || board[row][col].revealed)
     {
         return;
